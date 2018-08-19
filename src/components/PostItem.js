@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import { Button, Card, CardText, CardBody, CardSubtitle, CardHeader } from 'reactstrap'
-import { deletePost } from '../actions/postActions'
-import { connect } from 'react-redux';
-
 class PostItem extends Component {
 
   handleDelete(id){
-    console.log('handleDeletePost')
-    this.props.deletePost(id)
+    this.props.onDelete(id)
   }
 
   render() {
@@ -27,11 +23,11 @@ class PostItem extends Component {
         <CardBody>
           <CardSubtitle>{output}</CardSubtitle>
           <CardText>{this.props.post.body}</CardText>
-          {/* <Button color='danger' onClick={this.handleDelete.bind(this, this.props.post.id)} >X</Button> */}
+          <Button color='danger' onClick={this.handleDelete.bind(this, this.props.post.id)} >X</Button>
         </CardBody>
       </Card>
     )
   }
 }
 
-export default connect(null, { deletePost })(PostItem)
+export default PostItem

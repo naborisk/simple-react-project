@@ -5,6 +5,13 @@ import { deletePost } from '../actions/postActions'
 import PostItem from './PostItem';
 
 class Posts extends Component {
+  constructor(){
+    super()
+    this.state = {
+      posts: [],
+      newPost: {}
+    }
+  }
 
   onDelete(id){
     console.log('DELETE_POST id: ' + id)
@@ -17,9 +24,8 @@ class Posts extends Component {
 
   componentWillReceiveProps(nextProps){
     if(nextProps.newPost){
-      this.props.posts.unshift(nextProps.newPost)
+      this.props.posts.push(nextProps.newPost)
     }
-    console.log(this.props)
   }
 
   render() {
@@ -33,7 +39,7 @@ class Posts extends Component {
         <h2>Latest Posts</h2>
         {this.props.posts.map((post) => (
           <div>
-            <PostItem key={post.id} post={post} />
+            <PostItem key={post.id} post={post} onDelete={this.onDelete.bind(this)} />
             <br/>
           </div>
         ))}

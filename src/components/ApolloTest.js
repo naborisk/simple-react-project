@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Query } from "react-apollo"
-import { Card, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
+import { Card, CardBody, CardTitle, CardSubtitle, CardHeader, Input, Button } from 'reactstrap'
 import gql from "graphql-tag"
 
 class ApolloTest extends Component {
@@ -25,13 +25,16 @@ class ApolloTest extends Component {
             }
         `}
       >
+
+        
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :(</p>;
     
           return data.pokemons.map(({ number, name }) => (
            <Card key={number}>
-              <CardBody>{`${number}: ${name}`}</CardBody>
+              <CardHeader>{`${number}`}</CardHeader>
+              <CardBody>{`${name}`}</CardBody>
             </Card>
           ));
         }}

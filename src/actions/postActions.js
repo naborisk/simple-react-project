@@ -1,4 +1,4 @@
-import { NEW_POST, DELETE_POST } from './types'
+import { NEW_POST, DELETE_POST, FETCH_POSTS } from './types'
 
 export const createPost = (postData) => dispatch => {
     console.log(dispatch)
