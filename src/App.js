@@ -9,6 +9,7 @@ import store from './store'
 import PostForm from './components/PostForm'
 import Posts from './components/Posts'
 import Navi from './components/Navi'
+import ApolloTest from './components/ApolloTest';
 
 class App extends Component {
   render() {
@@ -25,8 +26,10 @@ class App extends Component {
             <hr/>
             <Posts />
             <hr/>
+            <br/>
             <p>Apollo GraphQL</p>
             <hr/>
+            <ApolloTest />
           </div>
         </div>
       </Provider>
