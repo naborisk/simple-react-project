@@ -33,7 +33,7 @@ class Navi extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="https://github.com/naborisk">GitHub</NavLink>
+                <NavLink href="https://github.com/naborisk/simple-react-project">GitHub</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
