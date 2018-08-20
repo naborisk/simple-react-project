@@ -16,7 +16,8 @@ class PostForm extends Component {
       this.state = {
           title: '',
           body: '',
-          id: ''
+          id: '',
+          editPost: false
       }
 
       this.onSubmit = this.onSubmit.bind(this)
@@ -40,7 +41,8 @@ class PostForm extends Component {
     const post = {
         title: $('#title').val(),
         body: $('#body').val(),
-        id: uuid.v4()
+        id: uuid.v4(),
+        editPost: false
     }
 
     if(post.title !== ''){

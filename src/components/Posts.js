@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { deletePost } from '../actions/postActions'
+import { deletePost, editPost, updatePost } from '../actions/postActions'
 import PostItem from './PostItem';
 
 class Posts extends Component {
@@ -22,6 +22,15 @@ class Posts extends Component {
     this.props.deletePost(id)
   }
 
+  onEdit(id){
+    this.props.editPost(id)
+    console.log('EDIT_POST id:' + id)
+  }
+
+  onSave(post){
+    this.props.updatePost(post)
+  }
+
   componentWillReceiveProps(nextProps){
     if(nextProps.newPost){
       this.props.posts.push(nextProps.newPost)
@@ -39,7 +48,12 @@ class Posts extends Component {
         <h2>Latest Posts</h2>
         {this.props.posts.map((post) => (
           <div>
-            <PostItem key={post.id} post={post} onDelete={this.onDelete.bind(this)} />
+            <PostItem
+              key={post.id} post={post}
+              onDelete={this.onDelete.bind(this)}
+              onEdit={this.onEdit.bind(this)}
+              onSave={this.onSave.bind(this)}
+            />
             <br/>
           </div>
         ))}
@@ -55,4 +69,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { deletePost })(Posts)
+export default connect(mapStateToProps, { deletePost, editPost, updatePost })(Posts)

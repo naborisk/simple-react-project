@@ -38,3 +38,5 @@ class App extends Component {
 }
 
 export default App
+
+// TODO: Fix the date feature (date should be kept with the post item or else it would be dynamic)
