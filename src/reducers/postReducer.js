@@ -23,8 +23,8 @@ export default function(state = initialState, action) {
                 items: state.items.map((post) => post.id === action.payload ? {...post, editPost: !post.editPost}: post )
             }
         case UPDATE_POST:
-            console.log(action.payload)
-            console.log(state.items.map(post => post === action.payload ? {...post, body: action.payload.body, editPost: !post.editPost} : post ))
+            //console.log(action.payload)
+            //console.log(state.items.map(post => post === action.payload ? {...post, body: action.payload.body, editPost: !post.editPost} : post ))
             return{
                 items: state.items.map(post => post.id === action.payload.id ? action.payload : post )
             }

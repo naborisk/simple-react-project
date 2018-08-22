@@ -26,12 +26,31 @@ class PostForm extends Component {
   handleSubmit(e){
     e.preventDefault()
 
-    // //Redux Way
+    //Redux Way
+    let d = new Date()
+
+    let month = d.getMonth()+1
+    let day = d.getDate()
+    let year = d.getFullYear()
+
+    let hours = d.getHours()
+    let min = d.getMinutes()
+
+
+    let postedTime = year + '/' +
+        (month<10 ? '0' : '') + month + '/' +
+        (day<10 ? '0' : '') + day + ' | ' +
+        (hours<10 ? '0' : '') + hours + ':' +
+        (min<10 ? '0' : '' ) + min
+
+    console.log(postedTime)
+
     const newPost = {
         title: $('#title').val(),
         body: $('#body').val(),
         id: uuid.v4(),
-        editPost: false
+        editPost: false,
+        postedTime
     }
 
     // if(post.title !== ''){

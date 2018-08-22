@@ -6,7 +6,7 @@ import { createPost, deletePost, editPost, updatePost } from '../actions/postAct
 import PostItem from './PostItem'
 import PostForm from './PostForm'
 
-class Posts extends Component {
+class PostView extends Component {
   constructor(){
     super()
     this.state = {
@@ -84,4 +84,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { createPost, deletePost, editPost, updatePost })(Posts)
+export default connect(mapStateToProps, { createPost, deletePost, editPost, updatePost })(PostView)
