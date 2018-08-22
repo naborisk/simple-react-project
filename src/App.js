@@ -7,7 +7,7 @@ import store from './store'
 
 // components import
 import PostForm from './components/PostForm'
-import Posts from './components/Posts'
+import PostView from './components/PostView'
 import Navi from './components/Navi'
 import ApolloTest from './components/ApolloTest';
 
@@ -22,9 +22,8 @@ class App extends Component {
             <p>Redux</p>
             <hr/>
             <br/>
-            <PostForm />
-            <hr/>
-            <Posts />
+            {/* Moved PostForm to PostView */}
+            <PostView />
             <hr/>
             <br/>
             <p>Apollo GraphQL</p>

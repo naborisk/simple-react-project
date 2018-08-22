@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { deletePost, editPost, updatePost } from '../actions/postActions'
-import PostItem from './PostItem';
+import { createPost, deletePost, editPost, updatePost } from '../actions/postActions'
+
+import PostItem from './PostItem'
+import PostForm from './PostForm'
 
 class Posts extends Component {
   constructor(){
@@ -11,6 +13,8 @@ class Posts extends Component {
       posts: [],
       newPost: {}
     }
+
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   onDelete(id){
@@ -31,6 +35,15 @@ class Posts extends Component {
     this.props.updatePost(post)
   }
 
+  onSubmit(e, newPost){
+    e.preventDefault()
+    //Redux Way
+
+    if(newPost.title !== ''){
+        this.props.createPost(newPost)
+    }
+  }
+
   componentWillReceiveProps(nextProps){
     if(nextProps.newPost){
       this.props.posts.push(nextProps.newPost)
@@ -45,6 +58,8 @@ class Posts extends Component {
 
     return (
       <div>
+        <PostForm onSubmit={this.onSubmit} />
+        <hr/>
         <h2>Latest Posts</h2>
         {this.props.posts.map((post) => (
           <div>
@@ -69,4 +84,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { deletePost, editPost, updatePost })(Posts)
+export default connect(mapStateToProps, { createPost, deletePost, editPost, updatePost })(Posts)

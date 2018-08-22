@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import $ from 'jquery'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
-import { createPost } from '../actions/postActions'
 import {  Button,
           Form,
           FormGroup,
@@ -20,47 +19,39 @@ class PostForm extends Component {
           editPost: false
       }
 
-      this.onSubmit = this.onSubmit.bind(this)
+      this.handleSubmit = this.handleSubmit.bind(this)
       //this.onChange = this.onChange.bind(this)
   }
 
-  onSubmit(e){
+  handleSubmit(e){
     e.preventDefault()
 
-    // Normal React Way
-
-    //   this.setState({
-    //         title: $('#title').val(),
-    //         body: $('#body').val()
-    //       }
-    //   )
-    //   console.log(this.state)
-
-    //Redux Way
-
-    const post = {
+    // //Redux Way
+    const newPost = {
         title: $('#title').val(),
         body: $('#body').val(),
         id: uuid.v4(),
         editPost: false
     }
 
-    if(post.title !== ''){
-        this.props.createPost(post)
-    }
+    // if(post.title !== ''){
+    //     this.props.createPost(post)
+    // }
+
+    this.props.onSubmit(e, newPost)
   }
   
   render() {
     return (
       <div>
-        <Form onSubmit={this.onSubmit}>
+        <Form onSubmit={this.handleSubmit}>
            <FormGroup>
              <h2>Add Post</h2>
              <Input type='text' name='title' id='title' placeholder='Title' />
              <br/>
              <Input type='textarea' name='body' id='body' placeholder='Body' />
              <br/>
-             <Button type='submit' color="success">Submit</Button>
+             <Button type='submit' color='success'>Submit</Button>
            </FormGroup>
         </Form>
       </div>
@@ -68,4 +59,4 @@ class PostForm extends Component {
   }
 }
 
-export default connect(null, { createPost })(PostForm)
+export default PostForm
